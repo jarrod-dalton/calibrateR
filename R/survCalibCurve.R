@@ -103,8 +103,8 @@ survCalibCurve <- function(data, time, event, p, timepoint,
   }
 
   list(
-    cal = ddply(md, gv, getCalibCurve),
-    risk.gp.cal = ddply(md, gv, getRiskGpCalibData),
+    cal = plyr::ddply(md, gv, getCalibCurve),
+    risk.gp.cal = plyr::ddply(md, gv, getRiskGpCalibData),
     knots = bs.knots
   )
 }
