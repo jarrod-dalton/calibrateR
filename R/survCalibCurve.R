@@ -1,8 +1,6 @@
 #' Calibration Analysis of Survival Predictions
 #'
 #' @rdname survCalibCurve
-#' @importFrom plyr ddply
-#' @importFrom tibble tibble
 #'
 #' @param data A dataset
 #' @param time unquoted name of the time variable
@@ -95,10 +93,10 @@ survCalibCurve <- function(data, time, event, p, timepoint,
     tix <- which(ph$time >= timepoint)[1]
 
     left_join(mean.p,
-              tibble(risk.gp   = rgps,
-                     incidence = 1-ph$surv[tix,],
-                     lcl       = 1-ph$upper[tix,],
-                     ucl       = 1-ph$lower[tix,]),
+              tibble::tibble(risk.gp   = rgps,
+                             incidence = 1-ph$surv[tix,],
+                             lcl       = 1-ph$upper[tix,],
+                             ucl       = 1-ph$lower[tix,]),
               by = "risk.gp")
   }
 
